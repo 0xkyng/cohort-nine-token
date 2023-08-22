@@ -9,6 +9,21 @@ contract CohortNine {
     uint constant DECIMAL = 18;
     uint _totalsupply;
     address public owner;
-    
+
+    mapping (address => uint) _balance;
+
+    mapping(address => mapping(address => uint)) _allowance;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "must be the owner");
+        _;
+    }
+
+    constructor(string memory name_, string memory symb_) {
+        _name = name_;
+        _symbol = symb_;
+        owner = msg.sender;
+    }
+
 
 }
