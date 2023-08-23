@@ -46,7 +46,7 @@ contract CohortNine {
         return _totalsupply;
     }
 
-    function balanceOf(address _owner) public view returns (uint256 balance){
+    function balanceOf(address _owner) public view returns (uint256){
     return _balance[_owner];
     }
 
@@ -92,13 +92,15 @@ function allowance(address _owner, address _spender) public view returns (uint25
     emit Minted(_to, value);
   }
 
-  function burn( address _to,uint value) external{
+  function burn(address _to, uint value) external{
     require(balanceOf(msg.sender) >= value, "insufficient funds");
     _balance[msg.sender] -= value; 
-    _totalSupply -= value * 90/100;
-
-    uint remainingValue = value * 10/100;
-    _balance[_to] += remainingValue;
+    _totalSupply -= value;
+   // _totalSupply -= value * 90/100;
+    
+    // uint remainingValue = value * 10/100;
+    //_balance[_to] += remainingValue;
+     _balance[_to] += value;
     
   }
 
