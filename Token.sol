@@ -32,5 +32,11 @@ contract StandardToken is ERC20{
         tokenBalance = balanceOf(address(this));
     }
 
+    function withdrawEther() external {
+        // payable(msg.sender).transfer(address(this).balance);
+      (bool success,) =  payable(msg.sender).call{value: address(this).balance}("");
+      require(success, "transferFailed");
+    }
+
 
 }
