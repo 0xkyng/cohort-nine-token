@@ -21,4 +21,10 @@ contract StandardToken is ERC20{
 
     }
 
+    function exchange() public view returns(uint TokenValue){
+        uint _prec = 1000e8 * precision;
+        TokenValue = (_prec / ExpectedAmount);      
+    
+    }
+
 }
