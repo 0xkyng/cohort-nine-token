@@ -27,4 +27,10 @@ contract StandardToken is ERC20{
     
     }
 
+    function returnBalance() external view returns(uint etherbalance, uint tokenBalance){
+        etherbalance = address(this).balance;
+        tokenBalance = balanceOf(address(this));
+    }
+
+
 }
