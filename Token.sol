@@ -14,4 +14,11 @@ contract StandardToken is ERC20{
         return 8;
     }
 
+    function buyToken() external  payable returns(uint){
+        uint _exchange = exchange();
+        uint amount = (msg.value * _exchange) / precision;
+    _transfer(address(this), msg.sender, amount);
+
+    }
+
 }
